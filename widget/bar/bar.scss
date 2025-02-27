@@ -1,0 +1,115 @@
+@import "../../colors.scss";
+
+window.Bar {
+  background: transparent;
+  color: $bg;
+  font-weight: bold;
+  font-family: 'JetBrains Mono Nerd Font Propo', monospace;
+
+  > centerbox {
+    background: $bg;
+    border-radius: 8px;
+    border-color: $purple;
+    border-width: 1px;
+    border-style: solid;
+    margin: 4px 6px 0px 6px;
+    padding: 0px 4px;
+  }
+
+  button {
+    border-radius: 8px;
+    margin: 2px 2px;
+    padding: 0px 2px;
+    color: $fg;
+    background-color: $bg1;
+  }
+
+  .WorkspacesContainer {
+    background: $bg1;
+    border-radius: 8px;
+    margin: 4px 0px;
+    padding: 0px 4px;
+  }
+
+  button.occupied {
+    background: $bg2;
+    color: $fg;
+  }
+
+  .focused {
+    padding: 0px 16px;
+    background: $purple;
+    color: $fg;
+  }
+
+  .ActiveApplication {
+    background: $bg1;
+    color: $fg;
+    border-radius: 8px;
+    margin: 4px 0px;
+    padding: 0px 8px;
+  }
+
+  .Media {
+    background: $bg1;
+    color: $fg;
+    border-radius: 8px;
+    margin: 4px 6px;
+    padding: 0px 8px;
+  }
+
+  .SysTray {
+    background: $blue;
+    padding: 0px 2px;
+    border-radius: 8px;
+    margin: 4px 6px 4px 0px;
+  }
+
+  .SysTrayItem {
+    background: $bg1;
+    padding: 0px 6px;
+    border-radius: 8px;
+    margin: 2px 1px;
+  }
+
+  .cpuMonitor {
+    background: $orange;
+    border-radius: 8px;
+    margin: 4px 6px 4px 0px;
+    padding: 0px 4px;
+  }
+
+  .ramMonitor {
+    background: $aqua_alt;
+    border-radius: 8px;
+    margin: 4px 6px 4px 0px;
+    padding: 0px 4px;
+  }
+
+  .SysTray icon {
+    font-size: 12px;
+    padding: 2px;
+  }
+
+  .MicIndicator {
+    background: $purple;
+    border-radius: 8px;
+    margin: 4px 6px 4px 0px;
+    padding: 0px 8px 0px 8px;
+  }
+
+  .Logo {
+    background: $bg1;
+    color: $blue;
+    border-radius: 8px;
+    margin: 4px 2px 4px 0px;
+    padding: 0px 0px;
+  }
+
+  .Time {
+    background: $aqua;
+    border-radius: 8px;
+    margin: 4px 0px 4px 6px;
+    padding: 0px 6px;
+  }
+}

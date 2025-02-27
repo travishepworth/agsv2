@@ -1,0 +1,80 @@
+@import "../../colors.scss";
+
+* {
+}
+
+.RightPanel {
+  background-color: rgba($bg, 0.9);
+  border: 1px solid $purple; /* Optional border */
+  border-radius: 8px; /* Optional rounded corners */
+}
+
+.BluetoothButton,
+.WifiButton,
+.StyleButton,
+.powermenuButton {
+  font-family: 'JetBrains Mono Nerd Font Propo', monospace;
+  padding: 20px;
+  font-size: 36px;
+  margin: 10px;
+}
+
+.Notifications {
+  background-color: $bg1;
+  border-radius: 8px;
+  margin: 4px 20px;
+  padding: 4px 8px;
+}
+
+.ClearAllButton:hover {
+  background-color: $purple;
+  color: $fg;
+}
+
+.ClearAllButton {
+  margin: 8px;
+}
+
+.NotificationsTopBox {
+  background-color: $bg;
+  border-radius: 8px;
+  margin: 4px 4px;
+  padding: 4px 8px;
+}
+
+.NotificationText {
+  color: $fg;
+  padding: 4px 0px 4px 4px;
+}
+
+.NotificationItem {
+  background-color: $bg;
+  border-radius: 8px;
+  margin: 4px 20px 4px 4px;
+  padding: 4px 0px 4px 4px;
+}
+
+.dismissButton {
+  font-family: 'JetBrains Mono Nerd Font Propo', monospace;
+  padding: 4px 4px 4px 6px;
+  margin: 2px 6px 0px 0px;
+}
+
+.dismissButton:hover {
+  background-color: $purple;
+  color: $fg;
+}
+
+.expandButton {
+  font-family: 'JetBrains Mono Nerd Font Propo', monospace;
+  padding: 4px 6px 4px 8px;
+  margin: 2px 0px 0px 2px;
+
+}
+
+.expandButton:hover {
+  background-color: $purple;
+  color: $fg;
+}
+
+

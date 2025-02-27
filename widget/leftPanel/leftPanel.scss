@@ -1,0 +1,15 @@
+@import "../../colors.scss";
+
+* {
+}
+
+.LeftPanel {
+  background-color: rgba($bg, 0.9);
+  border: 1px solid $purple; /* Optional border */
+  border-radius: 8px; /* Optional rounded corners */
+}
+
+.TextInput {
+  font-family: 'JetBrains Mono Nerd Font Propo', monospace;
+  margin: 10px 20px 20px 10px;
+}

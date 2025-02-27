@@ -1,0 +1,79 @@
+@use "sass:string";
+@import "../../colors.scss";
+
+@function gtkalpha($c, $a) {
+  @return string.unquote("alpha(#{$c},#{$a})");
+}
+
+window#launcher {
+  all: unset;
+
+  box.Splash {
+    border-radius: 8px;
+  }
+
+  box.fullLauncher {
+    background-color: $bg;
+    padding: 20px;
+    border: 2px solid $purple;
+    border-radius: 8px;
+  }
+
+  box.fullBox {
+    border-radius: 0px 8px 8px 0px;
+    background-color: $bg;
+  }
+
+  box.Applauncher {
+    background-color: $bg;
+    border-radius: 8px;
+    padding: 12.8px; /* 0.8rem = 0.8 * 16px = 12.8px */
+
+    entry {
+      margin-bottom: 12.8px; /* 0.8rem = 12.8px */
+    }
+
+    button {
+      min-width: 0;
+      min-height: 0;
+      padding: 8px; /* 0.5rem = 0.5 * 16px = 8px */
+
+      icon {
+        font-size: 32px; /* 3em = 3 * 16px = 48px (assuming em = root font size) */
+        margin-right: 4.8px; /* 0.3rem = 0.3 * 16px = 4.8px */
+      }
+
+      label.name {
+        font-size: 17.6px; /* 1.1em = 1.1 * 16px = 17.6px */
+      }
+
+      label.description {
+        color: gtkalpha($fg, 0.8);
+      }
+    }
+
+    button:focus {
+      background-color: $purple;
+      color: $bg;
+    }
+    
+    button:hover {
+      background-color: $purple;
+      color: $bg;
+    }
+
+    box.not-found {
+      padding: 16px; /* 1rem = 16px */
+
+      icon {
+        font-size: 96px; /* 6em = 6 * 16px = 96px */
+        color: gtkalpha($fg, 0.7);
+      }
+
+      label {
+        color: gtkalpha($fg, 0.9);
+        font-size: 19.2px; /* 1.2em = 1.2 * 16px = 19.2px */
+      }
+    }
+  }
+}
