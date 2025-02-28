@@ -17,6 +17,18 @@ function OnScreenProgress({ visible }: { visible: Variable<boolean> }) {
   const vesktopVolume = Variable(0);
   const gameVolume = Variable(0);
 
+  let differentCalls: number = 0;
+  function visibilityHandler() {
+    visible.set(true);
+    differentCalls++;
+    timeout(1250, () => {
+      differentCalls--;
+      if (differentCalls === 0) {
+        visible.set(false);
+      }
+    });
+  }
+
   // I was gonna say this is scuffed,
   // but it's kinda chad AF
   // Also very resource effecient (mostly)
@@ -25,54 +37,28 @@ function OnScreenProgress({ visible }: { visible: Variable<boolean> }) {
     const volume = parseInt(state.split(":")[1]);
     switch (applictation) {
       case "spotify":
-        visible.set(true);
         spotifyVolume.set(volume / 100);
-        timeout(2000, () => {
-          if (state === requestState.get()) {
-            visible.set(false);
-          }
-        });
+        visibilityHandler();
         break;
       case "librewolf":
-        visible.set(true);
         libreWolfVolume.set(volume / 100);
-        timeout(2000, () => {
-          if (state === requestState.get()) {
-            visible.set(false);
-          }
-        });
+        visibilityHandler();
         break;
       case "chromium":
-        visible.set(true);
+        visibilityHandler();
         vesktopVolume.set(volume / 100);
-        timeout(2000, () => {
-          if (state === requestState.get()) {
-            visible.set(false);
-          }
-        });
         break;
       case "other":
-        visible.set(true);
+        visibilityHandler();
         gameVolume.set(volume / 100);
-        timeout(2000, () => {
-          if (state === requestState.get()) {
-            visible.set(false);
-          }
-        });
         break;
     }
   });
 
-  let count = 0;
   function show(v: number, icon: string) {
-    visible.set(true);
+    visibilityHandler();
     value.set(v);
     iconName.set(icon);
-    count++;
-    timeout(2000, () => {
-      count--;
-      if (count === 0) visible.set(false);
-    });
   }
 
   return (

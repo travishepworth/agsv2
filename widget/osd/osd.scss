@@ -23,10 +23,12 @@ window.OSD {
   levelbar {
     trough {
       margin: 9.6px 16px; /* 0.6rem = 0.6 * 16 = 9.6px, 1rem = 1 * 16 = 16px */
+      border-radius: 8px;
     }
 
     block {
       min-width: 32px; /* 2rem = 2 * 16 = 32px */
+      border-radius: 8px;
       min-height: unset; /* No conversion needed */
     }
   }
