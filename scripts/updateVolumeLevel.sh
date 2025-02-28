@@ -16,12 +16,23 @@ pactl_output=$(pactl list sink-inputs)
 volume_level=$(echo "$pactl_output" | grep -A 15 "Sink Input #$SINK_INPUT_ID" | grep "Volume" | awk '{print $5}' | sed 's/%//g')
 application_name=$(echo "$pactl_output" | grep -A 20 "Sink Input #$SINK_INPUT_ID" | grep "application.name" | awk '{print $3}' | sed 's/"//g' | tr '[:upper:]' '[:lower:]')
 
-default_sink_names=("librewolf", "chromium", "spotify")
+default_sink_names=("librewolf" "chromium" "spotify")
 
 echo "Application name: $application_name"
 echo "Volume level: $volume_level"
 
-if [[ ! " ${default_sink_names[@]} " =~ " $application_name " ]]; then
+found=false
+for name in "${default_sink_names[@]}"; do
+  echo "Name: $name"
+  if [ "$name" == "$application_name" ]; then
+    echo "Found"
+    found=true
+    break
+  fi
+done
+
+echo "Found: $found"
+if [ "$found" == false ]; then
   application_name="other"
 fi
 
