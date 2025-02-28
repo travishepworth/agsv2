@@ -1,0 +1,33 @@
+@import "../../colors.scss";
+
+window.OSD {
+  all: unset;
+  box.OSD {
+    border-radius: 8px;
+    background-color: $bg;
+    border: 1px solid $purple;
+    padding: 13px 16px; /* 13rem = 13 * 16 = 208px, 16rem = 16 * 16 = 256px */
+    margin: 13px; /* 13rem = 13 * 16 = 208px */
+    box-shadow: 3px 3px 7px 0 rgba(0, 0, 0, 0.4);
+  }
+
+  icon {
+    font-size: 64px; /* 4rem = 4 * 16 = 64px */
+  }
+
+  label {
+    font-size: 38.4px; /* 2.4rem = 2.4 * 16 = 38.4px */
+    font-family: 'JetBrains Mono Nerd Font Propo', monospace;
+  }
+
+  levelbar {
+    trough {
+      margin: 9.6px 16px; /* 0.6rem = 0.6 * 16 = 9.6px, 1rem = 1 * 16 = 16px */
+    }
+
+    block {
+      min-width: 32px; /* 2rem = 2 * 16 = 32px */
+      min-height: unset; /* No conversion needed */
+    }
+  }
+}
