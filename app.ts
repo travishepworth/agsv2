@@ -9,6 +9,7 @@ import RightPanel from "./widget/rightPanel/rightPanel";
 import OSD from "./widget/osd/osd";
 import wallpaperSwitcher from "./widget/wallpaperSwitcher/wallpaperSwitcher";
 import PowerMenu from "./widget/powermenu/powermenu";
+import { execAsync } from "astal";
 
 App.start({
   requestHandler(request: string, res: (response: any) => void) {
@@ -17,6 +18,7 @@ App.start({
   },
   css: style,
   main() {
+    execAsync("python3 ./scripts/pulseAudioMonitor.py")
     App.get_monitors().map(Bar);
     App.get_monitors().map(Applauncher);
     App.get_monitors().map(NotificationPopups);
