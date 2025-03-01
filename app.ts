@@ -8,6 +8,7 @@ import LeftPanel from "./widget/leftPanel/LeftPanel";
 import RightPanel from "./widget/rightPanel/rightPanel";
 import OSD from "./widget/osd/osd";
 import wallpaperSwitcher from "./widget/wallpaperSwitcher/wallpaperSwitcher";
+import PowerMenu from "./widget/powermenu/powermenu";
 
 App.start({
   requestHandler(request: string, res: (response: any) => void) {
@@ -23,5 +24,6 @@ App.start({
     App.get_monitors().map(RightPanel);
     App.get_monitors().map(OSD);
     App.get_monitors().map(wallpaperSwitcher);
+    App.get_monitors().map(PowerMenu);
   },
 });

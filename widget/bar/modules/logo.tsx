@@ -6,9 +6,7 @@ export default function Logo() {
 
   // Function to handle logo click (placeholder for now)
   const launchPowerMenu = () => {
-    console.log("Power menu launched!"); // Placeholder—replace with power menu logic later
-    // Example: execAsync(["bash", "-c", "echo 'Launching power menu'"]); // Dummy command
-    isClicked.set(true); // Optional: update state for reactivity
+    execAsync(["bash", "-c", "ags toggle power-menu"]); // Dummy command
   };
 
   return (
