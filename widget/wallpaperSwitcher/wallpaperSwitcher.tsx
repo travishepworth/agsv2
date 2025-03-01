@@ -172,7 +172,7 @@ export default function WallpaperSwitcher() {
     <window
       name="wallpaper"
       application={App}
-      keymode={Astal.Keymode.ON_DEMAND}
+      keymode={Astal.Keymode.EXCLUSIVE}
       visible={false}
       onShow={() => {
         wallpapers.set(getWallpapersInDirectory(WALLPAPER_DIR));
@@ -214,7 +214,6 @@ export default function WallpaperSwitcher() {
             halign={Gtk.Align.CENTER}
           >
             {bind(filteredWallpapers).as((wallpaperList) => {
-              console.log(wallpaperList);
 
               const column1 = [];
               const column2 = [];
