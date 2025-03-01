@@ -41,42 +41,41 @@ def read_deej_sources():
     return sources
 
 
-def startMonitoring(application_names):
-    print(f"Monitoring these sources: {application_names}")
-
-    with pulsectl.Pulse("volume-monitor") as pulse:
-        sink_input_indecies = {
-            get_sink_input_by_name(pulse, app)
-            for app in application_names
-            if app != "master"
-        }
-        sink_input_indecies.discard(None)
-        print(f"Found sink inputs: {sink_input_indecies}")
-
-        if not sink_input_indecies:
-            print("No sink inputs found")
-            return
-
-        def volume_event(ev):
-            if (
-                ev.facility == "sink_input"
-                and ev.t == "change"
-                and ev.index in sink_input_indecies
-            ):
-                # Don't worry about the mixing of python and shell scripts
-                process = subprocess.Popen(
-                    [
-                        "/home/travis/.config/ags/scripts/updateVolumeLevel.sh",
-                        str(ev.index),
-                    ],
-                    stdout=subprocess.PIPE,
-                )
-                stdout = process.communicate()[0]
-                print(stdout.decode("utf-8"))
-
-        pulse.event_mask_set("sink-input")
-        pulse.event_callback_set(volume_event)
-
+# def startMonitoring(application_names):
+#     print(f"Monitoring these sources: {application_names}")
+#
+#     with pulsectl.Pulse("volume-monitor") as pulse:
+#         sink_input_indecies = {
+#             get_sink_input_by_name(pulse, app)
+#             for app in application_names
+#             if app != "master"
+#         }
+#         sink_input_indecies.discard(None)
+#         print(f"Found sink inputs: {sink_input_indecies}")
+#
+#         if not sink_input_indecies:
+#             print("No sink inputs found")
+#
+#         def volume_event(ev):
+#             if (
+#                 ev.facility == "sink_input"
+#                 and ev.t == "change"
+#                 and ev.index in sink_input_indecies
+#             ):
+#                 # Don't worry about the mixing of python and shell scripts
+#                 process = subprocess.Popen(
+#                     [
+#                         "/home/travis/.config/ags/scripts/updateVolumeLevel.sh",
+#                         str(ev.index),
+#                     ],
+#                     stdout=subprocess.PIPE,
+#                 )
+#                 stdout = process.communicate()[0]
+#                 print(stdout.decode("utf-8"))
+#
+#         pulse.event_mask_set("sink-input")
+#         pulse.event_callback_set(volume_event)
+#
 
 def main():
     current_time = time.time()
@@ -94,7 +93,6 @@ def main():
 
         if not sink_input_indecies:
             print("No sink inputs found")
-            return
 
         def volume_event(ev):
             if (
