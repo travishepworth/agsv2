@@ -1,18 +1,44 @@
 @import "../../colors.scss"; 
 
+.wallpaper-scrollable,
+.wallpaper-scrollable scrolledwindow,
+.wallpaper-scrollable viewport {
+  border-width: 0;
+  border-style: none;
+  box-shadow: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
 window#wallpaper {
   all: unset;
 
   box.wallpaper-switcher {
     background-color: $bg;
     border-radius: 8px;
-    padding: 20px;
+    padding: 20px 20px 0px 20px;
     border: 1px solid $purple;
     border-radius: 8px;
   }
 
+
+  label.name {
+    padding: 2px 0px;
+  }
+
+  box.wallpaper-column {
+    background-color: $bg;
+  }
+
+  box.column-box {
+    border: 0px solid $purple;
+    padding: 0px;
+    margin: 0px;
+  }
+
   entry {
-    margin-bottom: 12.8px; /* 0.8rem = 12.8px */
+    margin-bottom: 12.8px; 
     border-radius: 8px;
   }
 
