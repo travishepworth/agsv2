@@ -1,8 +1,6 @@
 import { Gtk } from "astal/gtk3";
 import { Variable, bind } from "astal";
 
-// Replace with your OpenAI API key
-
 
 export default function ChatGPTDisplay({ response }: {response: Variable<string> }) {
   return (

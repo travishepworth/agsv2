@@ -1,8 +1,31 @@
-import { execAsync } from "astal";
+import { GLib, Gio, execAsync } from "astal";
+import { readFile } from "astal/file"
 
-// Replace with your OpenAI API key
+const CACHE_DIR = `${GLib.get_user_cache_dir()}/ags/api`;
+
+function ensureCacheDir() {
+  const cacheDir = Gio.File.new_for_path(CACHE_DIR);
+  if (!cacheDir.query_exists(null)) {
+    cacheDir.make_directory_with_parents(null);
+  }
+}
+
+function readApiKey() {
+  ensureCacheDir();
+  const keyFile = `${CACHE_DIR}/api_key`;
+  const key: string = readFile(keyFile);
+  if (key) {
+    return key.trim();
+  } else {
+  return null;
+  }
+}
 
 export async function fetchChatGPTResponse(prompt: string): Promise<string> {
+  const API_KEY = readApiKey()
+  if (!API_KEY) {
+    console.error("API key not found. Please set the API key")
+  }
   const promptText = prompt || "Say something interesting."; // Fallback if empty
   const command = `
     curl -s -X POST https://api.openai.com/v1/chat/completions \
