@@ -5,7 +5,7 @@ export default function FocusedClient() {
   const hypr = Hyprland.get_default();
   const focused = bind(hypr, "focusedClient");
 
-  const truncateText = (text: string, maxLength: number=30) => {
+  const truncateText = (text: string, maxLength: number=15) => {
     if (!text) return "";
     return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
   }

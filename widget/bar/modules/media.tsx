@@ -5,6 +5,11 @@ import Mpris from "gi://AstalMpris";
 export default function Media() {
   const mpris = Mpris.get_default();
 
+  const truncateText = (text: string, maxLength: number=20) => {
+    if (!text) return "";
+    return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
+  }
+
   return (
     <box className="Media" visible={bind(mpris, "players").as((ps) => !!ps[0])}>
       {bind(mpris, "players").as((ps) =>
@@ -19,7 +24,7 @@ export default function Media() {
             />
             <label
               label={bind(ps[0], "metadata").as(
-                () => ` ${ps[0].title.substring(0,35)} || 󰳩 ${ps[0].artist.substring(0,20)}`,
+                () => ` ${truncateText(ps[0].title)} || 󰳩 ${truncateText(ps[0].artist, 10)}`,
               )}
             />
           </box>
