@@ -18,11 +18,17 @@ App.start({
   },
   css: style,
   main() {
-    execAsync("python3 ./scripts/pulseAudioMonitor.py")
+    execAsync([
+      "bash",
+      "-c",
+      `pkill -f "python3 $HOME/.config/ags/scripts/pulseAudioMonitor.py" ; python3 $HOME/.config/ags/scripts/pulseAudioMonitor.py`,
+    ])
+      .then((stdout) => console.log("Output: ", stdout))
+      .catch((err) => console.log("Error: ", err));
     App.get_monitors().map(Bar);
     App.get_monitors().map(Applauncher);
     App.get_monitors().map(NotificationPopups);
-    App.get_monitors().map(LeftPanel)
+    App.get_monitors().map(LeftPanel);
     App.get_monitors().map(RightPanel);
     App.get_monitors().map(OSD);
     App.get_monitors().map(wallpaperSwitcher);
