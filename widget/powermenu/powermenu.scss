@@ -9,8 +9,9 @@ window#power-menu {
   background-color: gtkalpha($bg, 0.6);
 
   box.power-buttons {
+    font-family: 'JetBrains Mono Nerd Font Propo', monospace;
     border-radius: 8px;
-    font-size: 24px;
+    font-size: 56px;
     color: $fg;
 
     button {

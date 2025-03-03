@@ -39,7 +39,7 @@ export default function PowerMenu() {
             widthRequest={200}
             heightRequest={200}
           >
-            <label label="Lock" />
+            <label label="" />
           </button>
           <button
             className="logout"
@@ -50,7 +50,7 @@ export default function PowerMenu() {
             widthRequest={200}
             heightRequest={200}
           >
-            <label label="Logout" />
+            <label label="󰍃" />
           </button>
         </box>
 
@@ -65,7 +65,7 @@ export default function PowerMenu() {
             widthRequest={200}
             heightRequest={200}
           >
-            <label label="Poweroff" />
+            <label label="⏻" />
           </button>
           <button
             className="restart"
@@ -76,7 +76,7 @@ export default function PowerMenu() {
             widthRequest={200}
             heightRequest={200}
           >
-            <label label="Restart" />
+            <label label="" />
           </button>
         </box>
       </box>
