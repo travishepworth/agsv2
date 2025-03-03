@@ -3,9 +3,11 @@ import { Variable, bind } from "astal";
 import { Astal, Gtk, Gdk } from "astal/gtk3";
 import TextInput from "./modules/textBox";
 import ChatGPTDisplay from "./modules/chatGPT";
-import { fetchBooruResponse, fetchChatGPTResponse } from "./modules/api";
+import { fetchYandereResponse, fetchChatGPTResponse } from "./modules/api";
 import APISwitcher from "./modules/apiSwitcher";
 import BooruDisplay from "./modules/booru";
+
+export const chatHistory = Variable<{ role: string; content: string }[]>([]);
 
 export default function LeftPanel(monitor: Gdk.Monitor) {
   const { CENTER } = Gtk.Align;
@@ -13,29 +15,34 @@ export default function LeftPanel(monitor: Gdk.Monitor) {
 
   // Calculate the width of the panel (e.g., half the screen width, adjustable)
   const panelWidth = Variable(20); // Default width, adjustable as needed
-  const barHeight = 40;
+  const barHeight = 42;
   const offset = 6;
   const promptText = Variable<string>("");
-  const chatResponse = Variable<string>("Waiting for response...");
-  const booruResponse = Variable<string>("Waiting for image...");
+  const booruResponse = Variable<string[]>(["Waiting for image..."]);
   const selectedAPI = Variable<"chatGPT" | "booru">("chatGPT");
 
   const handleTextSubmit = async (text: string) => {
     promptText.set(text);
     if (selectedAPI.get() === "chatGPT") {
+      chatHistory.set([...chatHistory.get(), { role: "user", content: text }]);
       const response = await fetchChatGPTResponse(text);
-      chatResponse.set(response);
+      chatHistory.set([
+        ...chatHistory.get(),
+        { role: "assistant", content: response },
+      ]);
     } else {
-      const response = await fetchBooruResponse(text);
+      const response = await fetchYandereResponse(text);
       booruResponse.set(response);
     }
   };
+
+  const clearChatHistory = () => chatHistory.set([]);
 
   return (
     <window
       name="leftPanel"
       className="LeftPanel"
-      visible={false}
+      visible={bind(isVisible)}
       anchor={
         Astal.WindowAnchor.LEFT |
         Astal.WindowAnchor.TOP |
@@ -43,7 +50,7 @@ export default function LeftPanel(monitor: Gdk.Monitor) {
       }
       marginTop={barHeight + offset}
       marginBottom={offset}
-      marginLeft={10}
+      marginLeft={offset}
       exclusivity={Astal.Exclusivity.IGNORE}
       keymode={Astal.Keymode.ON_DEMAND}
       application={App}
@@ -63,12 +70,21 @@ export default function LeftPanel(monitor: Gdk.Monitor) {
           </box>
           {bind(selectedAPI).as((api) =>
             api === "chatGPT" ? (
-              <ChatGPTDisplay response={chatResponse} />
+              <box vertical>
+                <ChatGPTDisplay history={chatHistory} />
+                <button
+                  label="Clear Chat"
+                  halign={CENTER}
+                  onClick={clearChatHistory}
+                />
+              </box>
             ) : (
-              <BooruDisplay response={booruResponse} />
-            )
+              <box vertical>
+                <BooruDisplay response={booruResponse} />
+              </box>
+            ),
           )}
-          <eventbox hexpand={true} vexpand={true}>
+          <eventbox hexpand={true} vexpand={false}>
             <box halign={CENTER} valign={Gtk.Align.END}>
               <TextInput onSubmit={handleTextSubmit} />
             </box>

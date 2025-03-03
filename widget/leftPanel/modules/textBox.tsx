@@ -17,6 +17,7 @@ export default function TextInput({
         placeholderText="Type here..."
         onActivate={(self) => handleSubmit(self.text, self)} // Enter keypress
         onChanged={(self) => self.text} // Update text as typed (optional)
+        onShow={(self) => self.grab_focus()} // Focus the entry on show
       />
       <button
         onClicked={(self) => {

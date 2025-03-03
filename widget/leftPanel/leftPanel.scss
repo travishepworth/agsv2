@@ -3,13 +3,58 @@
 * {
 }
 
+.ChatGPTScrollable,
+.ChatGPTScrollable scrolledwindow,
+.ChatGPTScrollable viewport {
+  box-shadow: none;
+  background: transparent;
+  padding: 8px;
+  margin: 0;
+  margin-right: 4px
+}
+
+.BooruDisplayScrollable,
+.BooruDisplayScrollable scrolledwindow,
+.BooruDisplayScrollable viewport {
+  box-shadow: none;
+  background: transparent;
+  padding: 8px;
+  margin: 0;
+  margin-right: 4px
+}
+
+.BooruDisplayScrollable viewport {
+  border: 1px solid $purple;
+  border-radius: 8px;
+}
+
+.ChatGPTScrollable viewport {
+  border: 1px solid $purple;
+  border-radius: 8px;
+}
+
 .LeftPanel {
-  background-color: rgba($bg, 0.9);
+  background-color: $bg;
   border: 1px solid $purple; /* Optional border */
   border-radius: 8px; /* Optional rounded corners */
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.User {
+  color: $purple;
+}
+
+.Assistant {
+  color: $green;
 }
 
 .TextInput {
   font-family: 'JetBrains Mono Nerd Font Propo', monospace;
   margin: 10px 20px 20px 10px;
 }
+
+box.scrollable {
+  margin : 10px;
+  border: 1px solid $purple;
+}
+
