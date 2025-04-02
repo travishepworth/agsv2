@@ -33,7 +33,7 @@ export default function PowerMenu() {
           <button
             className="lock"
             onClicked={() => {
-              execAsync(["bash", "-c", "hyprlock"]); // Replace with your lock command
+              execAsync(["bash", "-c", "hyprlock"]); 
               hide();
             }}
             widthRequest={200}
@@ -44,7 +44,7 @@ export default function PowerMenu() {
           <button
             className="logout"
             onClicked={() => {
-              execAsync(["bash", "-c", "hyprctl dispatch exit"]); // Logout for Hyprland
+              execAsync(["bash", "-c", "hyprctl dispatch exit"]);
               hide();
             }}
             widthRequest={200}
