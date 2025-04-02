@@ -14,7 +14,7 @@ export default function MicIndicator() {
   return (
     <box className="MicIndicator">
       <label
-        label={bind(micMuted).as((muted) => (!muted ? "" : " "))}
+        label={bind(micMuted).as((muted) => (!muted ? "" : ""))}
       />
     </box>
   )

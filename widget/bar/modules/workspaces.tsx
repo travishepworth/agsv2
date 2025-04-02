@@ -8,9 +8,9 @@ export default function Workspaces({ monitorName }: { monitorName: string }) {
   const hypr = Hyprland.get_default();
 
   // Determine the range of workspace IDs based on the monitor name
-  const workspaceRange = monitorName === "MSI MAG342CQR" ? [1, 10] : [11, 20];
+  const workspaceRange = monitorName === "MAG 341C OLED" ? [1, 10] : [11, 20];
 
-  const isMainMonitor = monitorName === "MSI MAG342CQR";
+  const isMainMonitor = monitorName === "MAG 341C OLED";
 
   return (
     <box className="WorkspacesContainer">
@@ -27,14 +27,15 @@ export default function Workspaces({ monitorName }: { monitorName: string }) {
                   let primaryMonitor: boolean = false;
                   for (let j = workspaceRange[0]; j <= workspaceRange[1]; j++) {
                     const wsc = wss.find((wsc) => wsc.id === j);
-                    if (wsc === fw && monitorName === "MSI MAG342CQR") {
+                    console.log(monitorName)
+                    if (wsc === fw && monitorName === "MAG 341C OLED") {
                       primaryMonitor = true;
                       break;
                     }
                   }
 
                   switch (monitorName) {
-                    case "MSI MAG342CQR":
+                    case "MAG 341C OLED":
                       if (ws === fw) {
                         lastMonitor = monitorName;
                         monitor1 = ws;
@@ -45,7 +46,7 @@ export default function Workspaces({ monitorName }: { monitorName: string }) {
                         return "occupied";
                       } else {
                       }
-                    case "Sceptre L24":
+                    case "MSI MAG342CQR":
                       if (ws === fw) {
                         lastMonitor = monitorName;
                         monitor2 = ws;
