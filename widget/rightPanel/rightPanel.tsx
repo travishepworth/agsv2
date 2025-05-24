@@ -6,6 +6,7 @@ import WifiButton from "./modules/quickButtons/wifiButton";
 import PowermenuButton from "./modules/quickButtons/powermenuButton";
 import StyleButton from "./modules/quickButtons/styleButton";
 import Notifications from "./modules/notificationManager";
+import Calendar from "./modules/calendar";
 
 export default function RightPanel(monitor: Gdk.Monitor) {
   const { CENTER } = Gtk.Align;
@@ -13,7 +14,7 @@ export default function RightPanel(monitor: Gdk.Monitor) {
 
   // Calculate the width of the panel (e.g., half the screen width, adjustable)
   const panelWidth = Variable(20); // Default width, adjustable as needed
-  const barHeight = 40;
+  const barHeight = 42;
   const offset = 6;
 
   return (
@@ -28,7 +29,7 @@ export default function RightPanel(monitor: Gdk.Monitor) {
       }
       marginTop={barHeight + offset}
       marginBottom={offset}
-      marginRight={10}
+      marginRight={offset}
       exclusivity={Astal.Exclusivity.IGNORE}
       keymode={Astal.Keymode.ON_DEMAND}
       application={App}
@@ -55,6 +56,9 @@ export default function RightPanel(monitor: Gdk.Monitor) {
           </box>
           <box halign={CENTER}>
             <Notifications />
+          </box>
+          <box halign={CENTER} valign={Gtk.Align.END}>
+            <Calendar />
           </box>
         </box>
       </box>

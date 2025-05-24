@@ -4,7 +4,7 @@
 }
 
 .RightPanel {
-  background-color: rgba($bg, 0.9);
+  background-color: $bg;
   border: 1px solid $purple; /* Optional border */
   border-radius: 8px; /* Optional rounded corners */
 }
@@ -75,6 +75,39 @@
 .expandButton:hover {
   background-color: $purple;
   color: $fg;
+}
+
+.CalendarWidget {
+    padding: 10px;
+}
+
+.calendar-grid {
+    /* 7 columns for days */
+    /* gtk-grid-column-count: 7; */
+    /* gtk-grid-column-spacing: 5px; */
+    /* gtk-grid-row-spacing: 5px; */
+}
+
+.calendar-day {
+    min-width: 30px;
+    min-height: 30px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.calendar-day.empty {
+    background-color: transparent;
+}
+
+.calendar-day.today {
+    background-color: #007bff;
+}
+
+.calendar-weekday {
+    min-width: 30px;
+    font-weight: bold;
+    color: #ccc;
 }
 
 
