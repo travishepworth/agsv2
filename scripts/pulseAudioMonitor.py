@@ -1,6 +1,7 @@
 # Script to build event drive audio changes for better performance
 import pulsectl
 import subprocess
+import os
 import re
 import time
 
@@ -65,9 +66,10 @@ def main():
                 and ev.index in sink_input_indecies
             ):
                 # Don't worry about the mixing of python and shell scripts
+                script_path = os.path.expanduser("~/.config/ags/scripts/updateVolumeLevel.sh")
                 process = subprocess.Popen(
                     [
-                        "/home/travis/.config/ags/scripts/updateVolumeLevel.sh",
+                        script_path,
                         str(ev.index),
                     ],
                     stdout=subprocess.PIPE,

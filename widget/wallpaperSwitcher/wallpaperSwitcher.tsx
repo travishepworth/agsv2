@@ -3,7 +3,7 @@ import { GLib, Gio, Variable, bind, exec, execAsync } from "astal";
 import GdkPixbuf from "gi://GdkPixbuf?version=2.0";
 
 const CACHE_DIR = `${GLib.get_user_cache_dir()}/ags/thumbnails`;
-const WALLPAPER_DIR = "/home/travis/Pictures/wallpapers";
+const WALLPAPER_DIR = `${GLib.get_home_dir()}/Pictures/wallpapers`;
 
 function hide() {
   App.get_window("wallpaper")!.hide();
@@ -23,7 +23,7 @@ function set_wallpaper(wallpaper: string) {
     .catch((error) => { console.error(`Failed to set wallpaper: ${error}`); });
 
   if (currentMonitor === "DP-1") {
-    execAsync(["bash", "-c", `rm /home/travis/.current_wallpaper && ln -s ${wallpaper} /home/travis/.current_wallpaper`]);
+    execAsync(["bash", "-c", `rm ${HOME}/.current_wallpaper && ln -s ${wallpaper} ${HOME}/.current_wallpaper`]);
   }
 }
 

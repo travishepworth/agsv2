@@ -62,7 +62,7 @@ export default function Applauncher() {
         text.set("");
         width.set(self.get_current_monitor().workarea.width);
         (splashBox as any).css = `
-          background-image: url("file:///home/travis/.current_wallpaper");
+          background-image: url("file:///home/travmonkey/.current_wallpaper");
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
